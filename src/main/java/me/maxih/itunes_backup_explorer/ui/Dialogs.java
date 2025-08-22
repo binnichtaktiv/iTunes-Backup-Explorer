@@ -82,4 +82,12 @@ public class Dialogs {
     private Dialogs() {
     }
 
+    public static void showSuccessDialog(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, message, ButtonType.OK);
+        alert.setTitle("Export successful");
+        alert.setHeaderText("Backup successfully exported");
+        ((Stage) alert.getDialogPane().getScene().getWindow()).getIcons().add(ITunesBackupExplorer.APP_ICON);
+        alert.showAndWait();
+    }
+
 }

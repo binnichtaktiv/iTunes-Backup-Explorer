@@ -230,7 +230,6 @@ public class WindowController {
         }
     }
 
-
     @FXML
     public void quit() {
         this.cleanUp();

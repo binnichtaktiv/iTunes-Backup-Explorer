@@ -80,15 +80,24 @@ public class FileSearchTabController {
 
         if (destination == null || !destination.exists()) return;
 
-        this.filesTable.getItems().forEach(backupFile -> {
-            if (backupFile.getFile().isEmpty()) return;
+        int successCount = 0;
+        int totalCount = this.filesTable.getItems().size();
+
+        for (BackupFileEntry backupFile : this.filesTable.getItems()) {
+            if (backupFile.getFile().isEmpty()) continue;
             try {
                 backupFile.getFile().get().extractToFolder(destination, true);
+                successCount++;
             } catch (IOException | BackupReadException | NotUnlockedException | UnsupportedCryptoException e) {
                 e.printStackTrace();
                 Dialogs.showAlert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK);
             }
-        });
+        }
+        
+        if (successCount > 0) {
+            String message = String.format("%d of %d files successfully exported to:\n%s", successCount, totalCount, destination.getAbsolutePath());
+            Dialogs.showSuccessDialog(message);
+        }
     }
 
     public void tabShown(ITunesBackup backup) {
