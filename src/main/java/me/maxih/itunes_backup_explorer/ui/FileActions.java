@@ -45,7 +45,7 @@ public class FileActions {
 
         try {
             file.extract(destination);
-            Dialogs.showSuccessDialog("Die Datei wurde erfolgreich exportiert nach:\n" + destination.getAbsolutePath());
+            Dialogs.showSuccessDialog("The file was successfully exported to:\n" + destination.getAbsolutePath());
         } 
         
         catch (IOException | BackupReadException | NotUnlockedException | UnsupportedCryptoException e) {
