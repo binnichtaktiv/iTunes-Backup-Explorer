@@ -29,9 +29,9 @@ public class FileSearchTabController {
     @FXML
     public void initialize() {
         TableColumn<BackupFileEntry, String> domainColumn = new TableColumn<>("Domain");
-        TableColumn<BackupFileEntry, String> nameColumn   = new TableColumn<>("Name");
-        TableColumn<BackupFileEntry, String> pathColumn   = new TableColumn<>("Path");
-        TableColumn<BackupFileEntry, Number> sizeColumn   = new TableColumn<>("Size");
+        TableColumn<BackupFileEntry, String> nameColumn = new TableColumn<>("Name");
+        TableColumn<BackupFileEntry, String> pathColumn = new TableColumn<>("Path");
+        TableColumn<BackupFileEntry, Number> sizeColumn = new TableColumn<>("Size");
 
         domainColumn.setCellValueFactory(new PropertyValueFactory<>("domain"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("fileName"));
