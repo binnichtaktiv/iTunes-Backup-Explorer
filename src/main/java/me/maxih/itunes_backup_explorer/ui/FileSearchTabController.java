@@ -76,7 +76,9 @@ public class FileSearchTabController {
             ));
         } catch (DatabaseConnectionException e) {
             e.printStackTrace();
-            Dialogs.showAlert(Alert.AlertType.ERROR, e.getMessage());
+            Platform.runLater(() -> {
+                Dialogs.showAlert(Alert.AlertType.ERROR, e.getMessage());
+            });
         }
     }
 
@@ -137,11 +139,13 @@ public class FileSearchTabController {
             Throwable exception = exportTask.getException();
             if (exception != null) {
                 exception.printStackTrace();
-                Dialogs.showAlert(
-                    Alert.AlertType.ERROR,
-                    "Export error: " + exception.getMessage(),
-                    ButtonType.OK
-                );
+                Platform.runLater(() -> {
+                    Dialogs.showAlert(
+                        Alert.AlertType.ERROR,
+                        "Export error: " + exception.getMessage(),
+                        ButtonType.OK
+                    );
+                });
             }
         });
 

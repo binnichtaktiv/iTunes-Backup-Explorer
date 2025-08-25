@@ -230,7 +230,9 @@ public class FilesTabController {
             domains = backup.queryDomainRoots();
         } catch (DatabaseConnectionException e) {
             e.printStackTrace();
-            Dialogs.showAlert(Alert.AlertType.ERROR, e.getMessage());
+            Platform.runLater(() -> {
+                Dialogs.showAlert(Alert.AlertType.ERROR, e.getMessage());
+            });
             domains = Collections.emptyList();
         }
 
@@ -307,8 +309,13 @@ public class FilesTabController {
             Throwable exception = extractTask.getException();
             if (exception != null) {
                 exception.printStackTrace();
-                Dialogs.showAlert(Alert.AlertType.ERROR,
-                    "Export error: " + exception.getMessage(), ButtonType.OK);
+                Platform.runLater(() -> {
+                    Dialogs.showAlert(
+                        Alert.AlertType.ERROR,
+                        "Export error: " + exception.getMessage(),
+                        ButtonType.OK
+                    );
+                });
             }
         });
 
@@ -361,8 +368,13 @@ public class FilesTabController {
             Throwable exception = extractTask.getException();
             if (exception != null) {
                 exception.printStackTrace();
-                Dialogs.showAlert(Alert.AlertType.ERROR,
-                    "Export error: " + exception.getMessage(), ButtonType.OK);
+                Platform.runLater(() -> {
+                    Dialogs.showAlert(
+                        Alert.AlertType.ERROR,
+                        "Export error: " + exception.getMessage(),
+                        ButtonType.OK
+                    );
+                });
             }
         });
 
