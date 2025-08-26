@@ -121,7 +121,6 @@ public class FileSearchTabController {
             }
         };
 
-        // Success Handler - with Platform.runLater
         exportTask.setOnSucceeded(event -> {
             Platform.runLater(() -> {
                 Integer successCount = exportTask.getValue();
@@ -134,7 +133,6 @@ public class FileSearchTabController {
             });
         });
 
-        // error handler
         exportTask.setOnFailed(event -> {
             Throwable exception = exportTask.getException();
             if (exception != null) {
@@ -149,7 +147,6 @@ public class FileSearchTabController {
             }
         });
 
-        // create progress bar
         Dialogs.ProgressAlert progressAlert = new Dialogs.ProgressAlert("Exporting files...", exportTask, true);
 
         // I *think* this is required because we have a progress bar now?

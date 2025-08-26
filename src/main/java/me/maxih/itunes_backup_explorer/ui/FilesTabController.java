@@ -291,7 +291,6 @@ public class FilesTabController {
 
         Task<Integer> extractTask = exportFiles(selectedFiles, destination);
 
-        // Success Handler - with Platform.runLater
         extractTask.setOnSucceeded(event -> {
             Platform.runLater(() -> {
                 Integer successCount = extractTask.getValue();
@@ -304,7 +303,6 @@ public class FilesTabController {
             });
         });
 
-        // error handler
         extractTask.setOnFailed(event -> {
             Throwable exception = extractTask.getException();
             if (exception != null) {
@@ -319,7 +317,7 @@ public class FilesTabController {
             }
         });
 
-        Dialogs.ProgressAlert progress = new Dialogs.ProgressAlert("Extracting...", extractTask, true);
+        Dialogs.ProgressAlert progress = new Dialogs.ProgressAlert("Exporting selected files...", extractTask, true);
         new Thread(extractTask).start();
         progress.showAndWait();
     }
@@ -350,7 +348,6 @@ public class FilesTabController {
 
         Task<Integer> extractTask = exportFiles(selectedFiles, destination);
 
-        // Success Handler - with Platform.runLater
         extractTask.setOnSucceeded(event -> {
             Platform.runLater(() -> {
                 Integer successCount = extractTask.getValue();
@@ -363,7 +360,6 @@ public class FilesTabController {
             });
         });
 
-        // error handler
         extractTask.setOnFailed(event -> {
             Throwable exception = extractTask.getException();
             if (exception != null) {
@@ -378,7 +374,7 @@ public class FilesTabController {
             }
         });
 
-        Dialogs.ProgressAlert progress = new Dialogs.ProgressAlert("Extracting...", extractTask, true);
+        Dialogs.ProgressAlert progress = new Dialogs.ProgressAlert("Exporting selected domains...", extractTask, true);
         new Thread(extractTask).start();
         progress.showAndWait();
     }
